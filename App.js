@@ -9,6 +9,8 @@ import {
   Platform,
   StyleSheet,
   Text,
+  Button,
+  AlertIOS,
   View
 } from 'react-native';
 
@@ -19,23 +21,39 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
+export default class App extends Component {
+
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={styles.bottomView}>
+          <Button title='Botão Alerta Ios' onPress={ () => this.botaoIos() }/>
+        </View>
       </View>
     );
   }
+  
+
+  botaoIos() {
+
+      AlertIOS.alert(
+        'Alert Title',
+        'My Alert Msg',
+        [
+          {text: 'Ask me later',
+           onPress: () => console.log('Ask me later pressed')},
+          {text: 'Cancel', 
+          onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+          {text: 'OK', 
+          onPress: () => console.log('OK Pressed')},
+        ]
+      )
+  };
+
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -44,14 +62,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  
+  bottomView: {
+    flexDirection: 'column',
+    paddingRight: 20,
+    paddingLeft: 20
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  input: {
+    marginBottom: 20
+  }
+
 });
