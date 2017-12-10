@@ -49,12 +49,12 @@ export default class App extends Component {
   botaoIos() {
 
       AlertIOS.alert(
-        'Alert Title',
-        'My Alert Msg',
+        'Componente Alerta',
+        'Mensagens de Alerta',
         [
-          {text: 'Ask me later',
+          {text: 'Pergunte-me depois',
            onPress: () => console.log('Ask me later pressed')},
-          {text: 'Cancel', 
+          {text: 'Cancelar', 
           onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
           {text: 'OK', 
           onPress: () => console.log('OK Pressed')},
