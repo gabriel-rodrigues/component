@@ -11,7 +11,8 @@ import {
   Text,
   Button,
   AlertIOS,
-  View
+  View,
+  Alert
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -28,7 +29,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.bottomView}>
-          <Button title='Botão Alerta Ios' onPress={ () => this.handlerOnPress() }/>
+          <Button title='Botão Alerta IOS/Android' onPress={ () => this.handlerOnPress() }/>
         </View>
       </View>
     );
@@ -41,7 +42,7 @@ export default class App extends Component {
        this.botaoIos();
     }
     else {
-      // AQUI VAI O CODIGO PARA EXIBIR O ALERTA PARA O ANDROID
+      this.botaoAndroid();
     }
 
   }
@@ -61,6 +62,22 @@ export default class App extends Component {
         ]
       )
   };
+
+  botaoAndroid() {
+    
+          Alert.alert(
+            'Componente Alerta',
+            'Mensagens de Alerta',
+            [
+              {text: 'Pergunte-me depois',
+               onPress: () => console.log('Ask me later pressed')},
+              {text: 'Cancelar', 
+              onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+              {text: 'OK', 
+              onPress: () => console.log('OK Pressed')},
+            ]
+          )
+      };
 
 }
 
