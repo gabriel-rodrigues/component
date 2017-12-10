@@ -28,12 +28,23 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.bottomView}>
-          <Button title='Botão Alerta Ios' onPress={ () => this.botaoIos() }/>
+          <Button title='Botão Alerta Ios' onPress={ () => this.handlerOnPress() }/>
         </View>
       </View>
     );
   }
   
+
+  handlerOnPress() {
+
+    if(Platform.OS === "ios") {
+       this.botaoIos();
+    }
+    else {
+      // AQUI VAI O CODIGO PARA EXIBIR O ALERTA PARA O ANDROID
+    }
+
+  }
 
   botaoIos() {
 
